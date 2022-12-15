@@ -2,7 +2,10 @@
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
   "name": "objShot",
-  "spriteId": null,
+  "spriteId": {
+    "name": "imgLightningShot",
+    "path": "sprites/imgLightningShot/imgLightningShot.yy",
+  },
   "solid": false,
   "visible": true,
   "managed": true,
@@ -21,7 +24,12 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [],
+  "eventList": [
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":4,"collisionObjectId":{"name":"objMob","path":"objects/objMob/objMob.yy",},},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":4,"collisionObjectId":{"name":"objPlayer","path":"objects/objPlayer/objPlayer.yy",},},
+  ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {

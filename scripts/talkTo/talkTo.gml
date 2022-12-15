@@ -50,6 +50,31 @@ function talkTo(o){
 	}
 	
 	
+	
+	if(pc.storyPoint == "found lightning"){
+	
+	
+		if(o == imgBrother1){
+			lines = [
+				"LIGHTNING? Neat I guess.",
+				"No way it's better than this FIRE I found."
+			];
+			images = [imgBrother1, imgBrother1];
+		}
+		
+		if(o == imgBrother2){
+			lines = [
+				"You and Mike both found something?",
+				"Me too, apparently it's called WIND.",
+				"I wonder what else is waiting to be found down there?"
+			];
+			images = [imgBrother2, imgBrother2, imgBrother2];
+		}
+		
+		
+	}
+	
+	
 		
 		
 	if(lines != ""){

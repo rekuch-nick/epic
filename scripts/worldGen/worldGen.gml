@@ -1,10 +1,13 @@
 function worldGen(note){
 	pc.inRoom = note;
+	pc.roomDis ++;
 	
 	mobPortal = false;
 	inCreation = false;
 	
 	if(note == "start"){
+		
+		pc.roomDis = 0;
 		
 		for(var a=0; a<15; a++){ for(var b=0; b<15; b++){
 			fmap[a, b] = imgSpace;
@@ -33,25 +36,36 @@ function worldGen(note){
 		instance_create_depth(a*50, b*50, layerFF-b, objPortal);
 	
 	} else if(note == "01" && pc.storyPoint == "start"){
-		
 		worldGenFirstLook();
-		
-		
+	
+	} else if(note == "01" && pc.storyPoint == "first look" && pc.roomDis >= 5){
+		worldGenLightningRoom();
 	
 	} else if(note == "01"){
 		mobPortal = true; inCreation = true;
 		
 		for(var a=0; a<15; a++){ for(var b=0; b<11; b++){
 			fmap[a, b] = choose(imgGrass, imgGrass, imgGrass, imgGrass2, imgGrass3);
+			
+			
 			bmap[a, b] = noone;
 			if(irandom_range(1, 20) == 1){ bmap[a, b] = imgRock; }
+			if(pc.roomDis >= 5 && irandom_range(1, 20) == 1){ bmap[a, b] = imgBush; }
 		}}
 		
-		spawnMob(objMob, 4);
+		var n = 2 + floor(pc.roomDis / 3);
+		if(pc.roomDis % 3 == 1){
+			spawnMob(objMob, n);
+		} else if (pc.roomDis % 3 == 2){
+			spawnMob(objMobBat, n);
+		} else {
+			spawnMob(objMob, n/2);
+			spawnMob(objMobBat, n/2);
+		}
 		
 		if(pc.storyPoint == "first look"){
 			var m = instance_find(objMob, 1);
-			spawnPup(m.x, m.y, objPup);
+			spawnPup(m.x, m.y, imgKey);
 		}
 		
 	} else {

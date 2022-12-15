@@ -1,11 +1,14 @@
 scaleToSize(1, 1);
 
 
+xp = 4;
+fruitChance = 20;
 
-
-hp = 100;
+hp = 800;
 pow = 150;
 bumpPow = 15;
+
+passWall = false;
 
 turnToFace = true;
 face = 1;

@@ -13,7 +13,8 @@ function spawnPup(a, b, t){
 		
 		if(collision_point(a, b, objPup, true, true)){ continue; }
 		
-		instance_create_depth(a, b, ww.layerP, t);
+		var p = instance_create_depth(a, b, ww.layerP, objPup);
+		p.sprite_index = t;
 		
 		return;
 		

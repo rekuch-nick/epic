@@ -14,6 +14,8 @@ function getPlayerInput(){
 	pc.mClick = mouse_check_button_pressed(mb_left);
 
 	pc.okPressed = keyboard_check_pressed(vk_enter);
+	
+	pc.pausePressed = keyboard_check_pressed(vk_escape) || keyboard_check_pressed(ord("I"));
 
 	//
 	pc.actHold = 0;

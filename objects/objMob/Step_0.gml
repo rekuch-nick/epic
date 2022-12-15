@@ -27,7 +27,7 @@ if(true){
 	
 	
 	x += xSpeed;
-	var col = pointInBlock(x, y);
+	var col = passWall ? false : pointInBlock(x, y);
 	if(!col){ 
 		var m = mobGetClosest();
 		if(m != noone){ if(point_distance(x, y, m.x, m.y) < fat){ col = true; } }
@@ -35,7 +35,7 @@ if(true){
 	if(col){ x -= xSpeed; xSpeed = 0; }
 	
 	y += ySpeed;
-	col = pointInBlock(x, y);
+	var col = passWall ? false : pointInBlock(x, y);
 	if(!col){ 
 		var m = mobGetClosest();
 		if(m != noone){ if(point_distance(x, y, m.x, m.y) < fat){ col = true; } }
@@ -51,6 +51,15 @@ if(true){
 
 
 
-
+if(hp < 1){
+	
+	if(irandom_range(0, 99) < fruitChance){
+		spawnPup(x, y, imgFruit);
+	}
+	
+	pc.xp += xp;
+	instance_destroy();
+	
+}
 
 

@@ -47,6 +47,16 @@ if(ww.lastTouchedBlock != noone){
 }
 
 
+if(mHold && (xM == 11 || xM == 12) && yM == 13 && inRoom != "start"){
+	returnTime ++;
+	if(returnTime >= 100){
+		ww.makeRoom = "start"; x = 375; y = 500;
+	}
+} else {
+	returnTime = 0;
+}
+
+
 
 
 if(hurtTime < 1){
@@ -61,15 +71,40 @@ if(hurtTime < 1){
 
 
 
+if(acts[act] != noone){
+	if(acts[act] == imgLightningWep && shotCD >= shotCDMax[act]){
+		
+		var m = mobGetClosest();
+		if(m != noone){
+			shotCD = 0;
+		
+			var s = instance_create_depth(x, y, ww.layerE, objShot);
+			s.xt = m.x; s.yt = m.y;
+		}
+		
+	}
+}
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+shotCD = clamp(shotCD + 1, 0, 3000);
 mp = clamp(mp + 1, 0, mpMax);
 if(ww.inCreation){
 	hp --;
 	
 	if(hp < 1){
-		ww.makeRoom = "start";
-		x = 375; y = 500;
+		ww.makeRoom = "start"; x = 375; y = 500;
 	}
 } else {
 	hp = clamp(hp + 10, 0, hpMax);
@@ -77,7 +112,23 @@ if(ww.inCreation){
 hurtTime = clamp(hurtTime - 1, 0, 120);
 
 
+if(pausePressed){
+	pausePressed = false;
+	instance_create_depth(0, 0, ww.layerS, objScreenInventory);
+}
+
+
 if(keyboard_check_pressed(vk_backspace)){
 	//hp = 10;
 	//effect_create_above(ef_cloud, x, y, 1, c_yellow);
+	roomDis += 10;
 }
+
+
+if(hurtTime > 0){
+	image_alpha = random_range(.3, 1);
+} else {
+	image_alpha = 1;
+}
+
+
